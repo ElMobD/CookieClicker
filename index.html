@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CooClicker</title>
+    <link rel="stylesheet" href="style/index.css">
+    <link rel="icon" href="image/champi-rouge.png">
+
+</head>
+<body onload="verifPseudo()">
+    <section class="accueil" id="id-accueil">
+        <section class="bleu">
+                <section class="sous-accueil" id="id-sous-accueil">       
+                    <p>ENTREZ VOTRE PSEUDO</p>
+                    <div class="champ-form" id="id-champ-form">
+                        <input type="text" placeholder="Pseudo" id="champ" onkeyup="entry()" onclick="surEntry()">
+                        <img src="image/fusee-noir-inverse.png" alt="" id="oui" onclick="goToClicker()">  
+                    </div>
+                </section>
+            </section>
+        </section>
+
+        <section class="clicker" id="clicker">
+            <video id="background-video" autoplay loop muted>
+                    <source src="video/01_overlay.mp4" type="video/mp4">
+            </video>
+
+            <!-- Les différents champi-->
+            <div class="champirouge" id="sur-champi-rouge">
+                <img src="image/champi-rouge.png" alt="" id="champi-rouge" onclick="animeclick(event)" class="champi-skin ontevoit">
+            </div>  
+            <div class="champirouge" id="sur-champi-rose">
+                <img src="image/champi-pinki.png" alt="" id="champi-rose" onclick="animeclick(event)" class="champi-skin ontevoitpas">
+            </div>     
+            <div class="champirouge" id="sur-champi-cyan">
+                <img src="image/champi-cyan.png" alt="" id="champi-cyan" onclick="animeclick(event)" class="champi-skin ontevoitpas">
+            </div>  
+            <div class="champirouge" id="sur-champi-bee">
+                <img src="image/champi-abeille.png" alt="" id="champi-bee" onclick="animeclick(event)" class="champi-skin ontevoitpas">
+            </div>  
+            <div class="champirouge" id="sur-champi-or">
+                <img src="image/champi-doree.png" alt="" id="champi-or" onclick="animeclick(event)" class="champi-skin ontevoitpas">
+            </div>  
+            <!-- Les différents champi-->
+
+            
+
+            <div class="header" id="id-header">
+                <div class="score" id="id-score">
+                    <img src="image/piece.png" alt="">
+                    <p id="text-piece"></p>
+                </div>
+                <div class="shop" id="id-shop">
+                    <img src="image/box3.jpg" alt="" id="shop-caddy" onclick="bonusToggle()">
+                </div>
+            </div>
+
+            <div class="bonus-card" id="bonus-card">
+                <h1>MAGASIN</h1>
+             
+                    <div class="bo-achat" id="bonus1" onclick="achatClicked1()">
+                        <div class="bo">
+                            <h3 id="trigger">Fleur de feu</h3>
+                            <div class="bo-cpt"><p>Niveau&nbsp;<p id="cpt1"></p></p></div>
+                        </div>
+                        <div class="price">
+                            <div class="price-img">
+                                <img src="image/fleur-de-feu.png" alt="">
+                            </div>
+                            <div class="price-text-piece">
+                                <p id="price1"></p>
+                                <img src="image/piece.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                
+       
+                    <div class="bo-achat" id="bonus2" onclick="achatClicked2()">
+                        <div class="bo">
+                            <h3>Boule de feu</h3>
+                            <div class="bo-cpt"><p>Niveau&nbsp;<p id="cpt2"></p></p></div>
+                        </div>
+                        <div class="price">
+                            <div class="price-img">
+                                <img src="image/boule-de-feu.png" alt="" id="bdf">
+                            </div>
+                            <div class="price-text-piece">
+                                <p id="price2"></p>
+                                <img src="image/piece.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+      
+                <div class="bo-achat" id="bonus3" onclick="achatClicked3()">
+                    <div class="bo">
+                        <h3>Etoile</h3>
+                        <div class="bo-cpt"><p>Niveau&nbsp;<p id="cpt3"></p></p></div>
+                    </div>
+                    <div class="price">
+                        <div class="price-img">
+                            <img src="image/etoile.png" alt="">
+                        </div>
+                        <div class="price-text-piece">
+                            <p id="price3"></p>
+                            <img src="image/piece.png" alt="">
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="fermer-bonus" id="fermer-bonus">
+                    <img src="image/fusee-noir.png" alt="">
+                    <p onclick="bonusToggle()">FERMER</p>
+                </div>
+            </div>
+
+            <div class="scoreboard" id="id-scoreboard">
+                <a href="scoreboard.html" id="score-a" target="_blank">
+                    <div class="sous-score">
+                        <img src="image/scoreboard.png" alt="" id="score-img">
+                        <p>Classement</p>
+                    </div>
+                </a>
+            </div>
+
+           <div class="settings" id="id-setting-card">
+                <div class="sous-setting">
+                    <img src="image/setting.png" alt="" id="id-setting-img" onclick="settingOpen()">
+                </div>
+            </div>
+            
+            <div class="setting-card" id="id-card-setting">
+               <div class="setting-header">
+                    <h1>parametre</h1>
+                    <img src="image/croix.png" alt="" id="id-croix-setting" onclick="settingClose()">
+               </div>
+               <div class="setting-container">
+                    <div class="userstat">
+                        <article class="username">
+                            <img src="image/mario.png" alt="">
+                            <p id="setting-pseudo"></p>
+                        </article>
+                        <article class="stats">
+                            <p>Meilleurs score : <span id="allScore"></span></p>
+                            <p>Nombre de clic : <span id="allClic"></span></p>
+                            <p>Pièce Dépensé : <span id="allMoneySpend"></span></p>
+                            <p>Argent total : <span id="allMoney"></span></p>
+                        </article>
+
+                        <button id="restart" onclick="restartGame()"><img src="image/restart.png" alt="">Nouvelle Partie</button>
+                    </div>
+                    <div class="skin">
+                        <p>Choississez un skin</p>
+                        <article class="theskins">
+                            <img src="image/champi-rouge.png" alt="" class="all-skin active-skin" onclick="addActiveSkin(event)" id="rouge">
+                            <img src="image/champi-cyan.png" alt="" class="all-skin" onclick="addActiveSkin(event)" id="cyan">
+                            <img src="image/champi-pinki.png" alt="" class="all-skin" onclick="addActiveSkin(event)" id="rose">
+                            <img src="image/champi-abeille.png" alt="" class="all-skin" onclick="addActiveSkin(event)" id="bee">
+                            <img src="image/champi-doree.png" alt="" class="all-skin" onclick="addActiveSkin(event)" id="gold">
+                        </article>
+                    </div>
+                    <div class="success">
+                        <p>Vos succès</p>
+                        <article class="thesuccess">
+                            <div class="lesSuccess" id="sucess1">
+                                <img src="image/success-toad-rouge.png" alt="">
+                                <p>Tu as débloqué le succès : atteindre 10 points</p>
+                            </div>
+                            <div class="lesSuccess" id="sucess2">
+                                <img src="image/success-mario.png" alt="">
+                                <p>Tu as débloqué le succès : atteindre 100 points</p>
+                            </div>
+                            <div class="lesSuccess" id="sucess3">
+                                <img src="image/success-yoshi.png" alt="">
+                                <p>Tu as débloqué le succès : atteindre 100 000 points</p>
+                            </div>
+                            <div class="lesSuccess" id="sucess4">
+                                <img src="image/success-peach.png" alt="">
+                                <p>Tu as débloqué le succès : premier achat</p>
+                            </div>
+                        </article>
+                    </div>
+               </div>
+            </div>
+            
+            <section class="the-success" id="id-s-1">
+                <div class="header-success">
+                    <p>Succes deverrouiller</p>
+                    <img src="image/croix.png" alt="" onclick="closeSuccess()">
+                </div>
+                <div class="main-success">
+                    <img src="image/success-toad-rouge.png" alt="">
+                    <p>Premier achat de bonus</p>
+                </div>
+                <div class="ok">
+                    <img src="image/succes-right.png" alt="">
+                </div>
+            </section>
+
+            <section class="the-success" id="id-s-2">
+                <div class="header-success">
+                    <p>Succes deverrouiller</p>
+                    <img src="image/croix.png" alt="" onclick="closeSuccess()">
+                </div>
+                <div class="main-success">
+                    <img src="image/success-toad-rouge.png" alt="">
+                    <p>Palier des 10 points atteint</p>
+                </div>
+                <div class="ok">
+                    <img src="image/succes-right.png" alt="">
+                </div>
+            </section>
+
+
+            <section class="the-success" id="id-s-3">
+                <div class="header-success">
+                    <p>Succes deverrouiller</p>
+                    <img src="image/croix.png" alt="" onclick="closeSuccess()">
+                </div>
+                <div class="main-success">
+                    <img src="image/success-toad-rouge.png" alt="">
+                    <p>Palier des 100 points atteint</p>
+                </div>
+                <div class="ok">
+                    <img src="image/succes-right.png" alt="">
+                </div>
+            </section>
+
+            <section class="the-success" id="id-s-4">
+                <div class="header-success">
+                    <p>Succes deverrouiller</p>
+                    <img src="image/croix.png" alt="" onclick="closeSuccess()">
+                </div>
+                <div class="main-success">
+                    <img src="image/success-toad-rouge.png" alt="">
+                    <p>Palier des 100 000 points atteint</p>
+                </div>
+                <div class="ok">
+                    <img src="image/succes-right.png" alt="">
+                </div>
+            </section>
+
+            
+
+
+        </section>
+
+
+        
+    <script src="js/index.js"></script>
+    <script src="js/var.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>
+

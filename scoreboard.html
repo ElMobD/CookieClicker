@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/scoreboard.css">
+    <title>Classement</title>
+    <link rel="icon" href="image/scoreboard.png">
+
+</head>
+<body onload="getScoreBoard()">
+
+    <div id="containerImg">
+        <!-- <img id="imgFond"src="./annexes/01_fond.png" alt=""> -->
+
+        <div id="containerClassement">
+            <div id="titre">
+                <div class="game">
+                    <a href="index.html"><img src="image/home.png" alt=""></a>
+                </div>
+                
+                    <img id="img-toadjaune" src="image/succes-toad-jaune.png" alt="image personnage toad jaune">
+                    <h1>Classement</h1>
+            </div>
+            <div class="scoreboard" id="score-board">
+
+            </div>
+        </div>
+    </div>
+    <div class="skip">
+        <div class="precedent">
+
+        </div>
+        <div class="skip-text">
+            <img src="image/fusee-noir.png" alt="" id="precedent"><p><span id="actu"></span>/<span id="total"></span></p><img src="image/fusee-noir-inverse.png" alt="" id="suivant">
+        </div>
+        <div class="suivant">
+
+        </div>
+    </div>
+
+
+    <script src="js/api.js"></script>
+    <script src="js/var.js"></script>
+</body>
+</html>
